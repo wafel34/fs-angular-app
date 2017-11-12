@@ -1,12 +1,22 @@
 var express = require('express'),
     app = express(),
+    bodyParser = require('body-parser'),
     MongoClient = require('mongodb').MongoClient,
+    path = require('path'),
     database;
 
 require('dotenv').config();
 
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/profiles', express.static(path.join(__dirname, 'profiles')));
 
 MongoClient.connect(process.env.DB_CONN, (err, db)=>{
+    if (err) {
+        console.log(err);
+        return;
+    }
+
     console.log('connected to database');
 
     app.listen(3000, ()=>{
@@ -16,11 +26,32 @@ MongoClient.connect(process.env.DB_CONN, (err, db)=>{
 });
 
 
-app.use('/api/contacts', (req, res)=>{
+app.get('/api/contacts', (req, res)=>{
     var contactsCollection = database.collection('contacts');
 
     contactsCollection.find({}).toArray((err, docs)=>{
-        console.log(docs);
+        if (err) {
+            console.log(err);
+            return;
+        }
         return res.json(docs);
     })
+});
+
+app.post('/api/contacts', (req, res)=>{
+    var user = req.body,
+        contactsCollection = database.collection('contacts');
+
+        contactsCollection.insertOne(user, (err, result)=>{
+            if (err) {
+                return res.sendStatus(500);
+            }
+
+            var newRecord = result.ops[0];
+            return res.sendStatus(201);
+        });
+});
+
+app.get('*', (req, res)=>{
+    return res.sendFile(path.join(__dirname, 'public/index.html'));
 });
