@@ -1,0 +1,15 @@
+.app-container
+    max-width: 2000px
+    margin: 0 auto
+    overflow: hidden
+
+
+
+@supports(grid-area: auto)
+    .grid
+        max-width: 90%
+        margin: 0 auto
+        display: grid
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+        grid-gap: 15px
+        grid-template-rows: 1fr

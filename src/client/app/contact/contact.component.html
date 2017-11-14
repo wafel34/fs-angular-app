@@ -1,3 +1,13 @@
 <div class="card">
-    <img [src]="contact?.photoUrl" alt="">
+    <img class="card__image" [src]="contact?.photoUrl" alt="">
+    <div class="card__content">
+        <a class="card__name">{{contact.name}}</a>
+
+        <div class="card__address">
+            {{contact.address}}
+        </div>
+        <div class="card_phone">
+            {{contact.phone}}
+        </div>
+    </div>
 </div>

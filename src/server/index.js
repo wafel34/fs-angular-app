@@ -2,6 +2,7 @@ var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     MongoClient = require('mongodb').MongoClient,
+    databaseURL = 'mongodb://localhost:27017/fs-app-database',
     path = require('path'),
     database;
 
@@ -11,7 +12,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/profiles', express.static(path.join(__dirname, 'profiles')));
 
-MongoClient.connect(process.env.DB_CONN, (err, db)=>{
+
+MongoClient.connect(databaseURL, (err, db)=>{
     if (err) {
         console.log(err);
         return;
@@ -35,7 +37,7 @@ app.get('/api/contacts', (req, res)=>{
             return;
         }
         return res.json(docs);
-    })
+    });
 });
 
 app.post('/api/contacts', (req, res)=>{

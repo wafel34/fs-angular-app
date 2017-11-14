@@ -3,10 +3,11 @@ require('dotenv').config();
 var users = require('./users.json'),
     contacts = require('./contacts.json'),
     MongoClient = require('mongodb').MongoClient,
+    databaseURL = 'mongodb://localhost:27017/fs-app-database',
     bcrypt = require('bcrypt');
 
 function seedCollection(collectionName, initialRecords) {
-    MongoClient.connect(process.env.DB_CONN, (err, db)=>{
+    MongoClient.connect(databaseURL, (err, db)=>{
         console.log('connected to mongodb');
 
         const collection = db.collection(collectionName);

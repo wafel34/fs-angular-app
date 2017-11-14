@@ -4,6 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "myscript": "ng build --watch ",
+    "full": "run-p watch:server myscript",
     "start": "run-s build start:server",
     "start:server": "node src/server/index.js",
     "watch:client": "ng serve --proxy-config proxy.conf.json --open",
