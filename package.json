@@ -4,15 +4,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "myscript": "ng build --watch ",
-    "full": "run-p watch:server myscript",
     "start": "run-s build start:server",
+    "startDev": "run-p build watch:server",
     "start:server": "node src/server/index.js",
     "watch:client": "ng serve --proxy-config proxy.conf.json --open",
     "watch:server": "nodemon src/server/index.js",
     "watch": "run-p watch:*",
     "sample": "node src/server/data/seed-db.js",
-    "build": "ng build --prod",
+    "build": "ng build --watch",
     "test": "ng test",
     "lint": "ng lint"
   },

@@ -9,13 +9,17 @@ import { AppComponent } from './app.component';
 
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactComponent } from './contact/contact.component';
+import { AddContactComponent } from './add-contact/add-contact.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    ContactComponent
+    ContactComponent,
+    AddContactComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
