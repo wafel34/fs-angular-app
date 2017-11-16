@@ -50,7 +50,7 @@ app.post('/api/contacts', (req, res)=>{
             }
 
             var newRecord = result.ops[0];
-            return res.sendStatus(201);
+            return res.status(201).json(newRecord);
         });
 });
 

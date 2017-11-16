@@ -1,5 +1,5 @@
 <div class="card">
-    <img class="card__image" [src]="contact?.photoUrl" alt="">
+    <img class="card__image" *ngIf="contact.photoUrl" [src]="contact.photoUrl" alt="">
     <div class="card__content">
         <a class="card__name">{{contact.name}}</a>
 
