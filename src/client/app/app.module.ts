@@ -11,6 +11,7 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactComponent } from './contact/contact.component';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { MenuComponent } from './menu/menu.component';
+import { ApiService } from './shared/api.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { MenuComponent } from './menu/menu.component';
     HttpModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

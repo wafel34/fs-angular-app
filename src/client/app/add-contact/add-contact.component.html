@@ -1,42 +1,45 @@
 <div class="site">
     <div class="container">
         <h1 class="header">Add a new contact</h1>
-        <form (ngSubmit)="onSubmit(contactForm)" [class.loading]="loading" #contactForm="ngForm">
-            <fieldset>
-                <div class="fieldset">
-                    <div class="fieldset__row">
-                        <label class="fieldset__label" for="first-name">First Name</label>
-                        <input class="fieldset__input" type="text" placeholder="John" id="first-name" name="firstName" ngModel>
-                    </div>
-                    <div class="fieldset__row">
-                        <label class="fieldset__label" for="lastName">Last Name</label>
-                        <input class="fieldset__input" type="text" placeholder="Smith" id="last-name" name="lastName" ngModel>
-                    </div>
-                </div>
 
-            </fieldset>
-            <fieldset>
-                <div class="fieldset">
-                    <label class="fieldset__label" for="address">Adress</label>
-                    <input class="fieldset__input" type="text" name="address" id="address" placeholder="Adress" ngModel>
+            <form (ngSubmit)="onSubmit(contactForm)" [class.loading]="loading" #contactForm="ngForm">
+                <div class="loading" *ngIf="loading">
                 </div>
-            </fieldset>
-            <fieldset>
-                <div class="fieldset">
-                    <label class="fieldset__label" for="phone">Phone no:</label>
-                    <input class="fieldset__input" type="text" name="areaCode" id="phone" placeholder="(###)" maxlength="5" ngModel>
-                    <input class="fieldset__input" type="text" name="prefix" placeholder="###" maxlength="3" ngModel>
-                    <input class="fieldset__input" type="text" name="lineNumber" placeholder="(###)" maxlength="4" ngModel>
-                </div>
+                <fieldset>
+                    <div class="fieldset">
+                        <div class="fieldset__row">
+                            <label class="fieldset__label" for="first-name">First Name</label>
+                            <input class="fieldset__input" type="text" placeholder="John" id="first-name" name="firstName" ngModel>
+                        </div>
+                        <div class="fieldset__row">
+                            <label class="fieldset__label" for="lastName">Last Name</label>
+                            <input class="fieldset__input" type="text" placeholder="Smith" id="last-name" name="lastName" ngModel>
+                        </div>
+                    </div>
 
-            </fieldset>
-            <fieldset>
-                <div class="fieldset">
-                    <label class="fieldset__label" for="photo">Photo URL</label>
-                    <input class="fieldset__input" type="text" placeholder="http://cdn.com/profile.jpg" name="photo" id="photo" ngModel>
-                </div>
-            </fieldset>
-            <button type="submit" class="button__submit">Submit</button>
-        </form>
+                </fieldset>
+                <fieldset>
+                    <div class="fieldset">
+                        <label class="fieldset__label" for="address">Adress</label>
+                        <input class="fieldset__input" type="text" name="address" id="address" placeholder="Adress" ngModel>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="fieldset">
+                        <label class="fieldset__label" for="phone">Phone no:</label>
+                        <input class="fieldset__input" type="text" name="areaCode" id="phone" placeholder="(###)" maxlength="5" ngModel>
+                        <input class="fieldset__input" type="text" name="prefix" placeholder="###" maxlength="3" ngModel>
+                        <input class="fieldset__input" type="text" name="lineNumber" placeholder="(###)" maxlength="4" ngModel>
+                    </div>
+
+                </fieldset>
+                <fieldset>
+                    <div class="fieldset">
+                        <label class="fieldset__label" for="photo">Photo URL</label>
+                        <input class="fieldset__input" type="text" placeholder="http://cdn.com/profile.jpg" name="photo" id="photo" ngModel>
+                    </div>
+                </fieldset>
+                <button type="submit" class="button__submit">Submit</button>
+            </form>
     </div>
 </div>
