@@ -1,4 +1,7 @@
-var express = require('express');
+var express = require('express'),
+    jwt = require('jsonwebtoken'),
+    bodyParse = require('body-parser'),
+    bcrypt = require('bcrypt');
 
 function apiRouter (database) {
     const router = express.Router();
@@ -27,6 +30,35 @@ function apiRouter (database) {
 
                 var newRecord = result.ops[0];
                 return res.status(201).json(newRecord);
+            });
+    });
+
+    router.post('/authenticate', (req, res)=>{
+        const user = req.body,
+        usersCollection = database.collection('users');
+        usersCollection.findOne(
+            {username: user.username},(err, result) => {
+
+                if (!result) {
+                    return res.status(404).json({error: 'User not found'});
+                }
+
+                if (!bcrypt.compareSync(user.password, result.password)) {
+                    return res.status(401).json({error: 'Invalid password'});
+                }
+
+                const payload = {
+                    user: user.username,
+                    admin: result.admin
+                };
+
+
+                const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '4h'});
+
+                return res.json({
+                    message: 'Succesfuly logged in',
+                    token: token
+                });
             });
     });
 

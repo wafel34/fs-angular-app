@@ -6,6 +6,8 @@ var express = require('express'),
     path = require('path'),
     createExpressApp = require('./create-express-app');
 
+    require('dotenv').config();
+
 MongoClient.connect(databaseURL, (err, db)=>{
     if (err) {
         console.log(err);
