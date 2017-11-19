@@ -11,7 +11,10 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactComponent } from './contact/contact.component';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './login/login.component';
 import { ApiService } from './shared/api.service';
+import { AuthService } from './shared/auth.service';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -20,7 +23,8 @@ import { ApiService } from './shared/api.service';
     ContactListComponent,
     ContactComponent,
     AddContactComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import { ApiService } from './shared/api.service';
     HttpModule,
     FormsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

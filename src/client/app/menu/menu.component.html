@@ -2,7 +2,8 @@
     <h1 class="menu__header">Contacts Manager</h1>
     <div>
         <a routerLink="/contacts" class="menu__item">Contacts</a>
-        <a routerLink="/new" class="menu__item">Add new contact</a>
+        <a routerLink="/new" class="menu__item" *ngIf="this.auth.isLoggedIn()">Add new contact</a>
+        <a routerLink="/login" class="menu__item" (click)="logout()" *ngIf="this.auth.isLoggedIn()">Log Out</a>
     </div>
 
 </nav>
