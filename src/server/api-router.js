@@ -31,6 +31,22 @@ function apiRouter (database) {
         });
     });
 
+    router.get('/contacts/:name', (req, res)=>{
+        var contactsCollection = database.collection('contacts'),
+            name = req.params.name;
+
+            contactsCollection.findOne({name: name}, (err, result)=>{
+                if (err) {
+                    return res.sendStatus(500);
+                }
+                if (!result) {
+                    return res.sendStatus(404);
+                }
+
+                return res.json(result);
+            });
+    });
+
     router.post('/contacts', (req, res)=>{
         var user = req.body,
             contactsCollection = database.collection('contacts');
